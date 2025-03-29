@@ -1,17 +1,17 @@
 <?php
     class Assets{
-       public static function css_loader($file_name){
-            $file_url= THEME_URL.'/accets/css/'.$file_name;
+       public static function css($file_name){
+            $file_url= THEME_URL.'/assets/css/'.$file_name;
             return $file_url;
        }
 
-       public static function js_loader($file_name){
-            $file_url= THEME_URL.'/accets/js/'.$file_name;
+       public static function js($file_name){
+            $file_url= THEME_URL.'/assets/js/'.$file_name;
             return $file_url;        
         }
        
-       public static function img_loader($file_name){
-            $file_url= THEME_URL.'/accets/img/'.$file_name;
+       public static function image($file_name){
+            $file_url= THEME_URL.'/assets/img/'.$file_name;
             return $file_url;
        }
 
