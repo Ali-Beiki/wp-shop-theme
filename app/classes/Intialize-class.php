@@ -1,6 +1,7 @@
 <?php
 class Intialize{
 
+    #setup
     public static function setup(){
         add_action('wp_enqueue_scripts', function(){self::styles_scripts_register();});
         add_action('after_setup_theme',function(){self::feature_theme();});
@@ -8,7 +9,7 @@ class Intialize{
     }
 
     private static function styles_scripts_register(){
-    // for css
+    # for css
         wp_enqueue_style('bootstrap', Assets::css('bootstrap.min.css'), [], '1.0.0');
         wp_enqueue_style('slick', Assets::css('slick.css'), [], '1.0.0');
         wp_enqueue_style('slick-theme', Assets::css('slick-theme.css'), [], '1.0.0');
@@ -16,10 +17,10 @@ class Intialize{
         wp_enqueue_style('font-awesome', Assets::css('font-awesome.min.css'), [], '1.0.0');
         wp_enqueue_style('style', Assets::css('style.css'), [], '1.0.0');
 
-        // Load jQuery (WordPress includes jQuery, just enqueue it)
+        # Load jQuery (WordPress includes jQuery, just enqueue it)
         wp_enqueue_script('jquery');
 
-        // for js
+        # for js
         wp_enqueue_script('bootstrap', Assets::js('bootstrap.min.js'), ['jquery'], '1.0.0', true);
         wp_enqueue_script('jquery-zoom', Assets::js('jquery.zoom.min.js'), ['jquery'], '1.0.0', true);
         wp_enqueue_script('nouislider', Assets::js('nouislider.min.js'), ['jquery'], '1.0.0', true);

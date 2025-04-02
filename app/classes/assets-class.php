@@ -1,6 +1,7 @@
 <?php
     class Assets{
-       public static function css($file_name){
+     # server lodaer file
+     public static function css($file_name){
             $file_url= THEME_URL.'/assets/css/'.$file_name;
             return $file_url;
        }

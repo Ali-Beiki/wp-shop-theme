@@ -3,8 +3,10 @@
     require_once get_template_directory() . '/constants.php';
     require_once THEME_PATH . '/app/autoloader.php'; # میرود و اسم کلاسی که موجود نیست رو میگیره به عنوان ورودی spl_autoload_register هر وقت از کلاسی شئ ساخته شد و ان کلاس نباشد به این سراغ تابع 
 
+    Posttype::setup();
+    Metaboxes::setup();
     Intialize::setup();
-
+    
     // echo THEME_PATH;
 
 

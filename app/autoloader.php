@@ -1,7 +1,7 @@
 <?php
     class Autoloader{
         public function __construct(){
-            spl_autoload_register(array($this,'autoload')); # اگر کلاسی وجود نداشت اسم کلاس رو به تابع پاس میده
+            spl_autoload_register(array($this,'autoload')); # اگر کلاسی وجود نداشت در اسکوپ اسم کلاس رو به تابع پاس میده
         }
 
         public function autoload($class_name){
@@ -12,7 +12,7 @@
                 // echo 'autoload success full :'.$full_file_path .'<br>';
                 include $full_file_path;
             }else{
-                // echo 'not found file :'.$full_file_path.'<br>';
+                // echo 'Autoloader Calss ,not found file :'.$full_file_path.'<br>';
             }
         }
 
