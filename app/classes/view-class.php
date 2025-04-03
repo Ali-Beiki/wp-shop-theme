@@ -26,7 +26,7 @@
             $view_file_path =THEME_VIEWS.$view_name.'.php'; # create view path
 
             # access condition
-            if(is_file($view_file_path) and is_readable($view_file_path)){
+            if(is_file($view_file_path) && is_readable($view_file_path)){
                 !empty($data) ? extract($data) : null;# define variable from array key
                 include $view_file_path; 
             }

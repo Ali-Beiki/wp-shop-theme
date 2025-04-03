@@ -2,6 +2,12 @@
     class Posttype{
         public static function setup(){
             add_action( 'init', function(){self::register_product_post_type();} );
+
+            # add custom columns
+            add_filter('manage_product_posts_columns',function($columns){ return self::add_custom_colunms_product($columns);});
+            #show value in every row
+            add_action( 'manage_product_posts_custom_column' , function($column,$post_id){self::show_product_price_value_columns($column,$post_id);}, 10, 2 );
+
         }
 
         #register custom post type
@@ -51,4 +57,19 @@
         
             register_post_type( 'product', $args ); # register custome post type
         } 
+
+        private static function add_custom_colunms_product($columns){
+            #add custom columns to array columns
+            $columns['product_price'] = ' قیمت ';
+            return $columns;
+        }
+
+        private static function show_product_price_value_columns($column,$post_id){
+            if($column == 'product_price'){
+                $product_price = get_post_meta($post_id,'product_price',true); # get price in DB (in table {prefix}_postmeta)
+                $product_price = number_format($product_price); # formating price
+
+                echo Utility::persian_number($product_price). ' تومان ';
+            }
+        }
     }

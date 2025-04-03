@@ -8,7 +8,7 @@
             $full_file_path=$this->convert_class_name_to_file_class($class_name);
             
 
-            if(is_file($full_file_path) and file_exists($full_file_path) and is_readable($full_file_path)){
+            if(is_file($full_file_path) && file_exists($full_file_path) && is_readable($full_file_path)){
                 // echo 'autoload success full :'.$full_file_path .'<br>';
                 include $full_file_path;
             }else{
