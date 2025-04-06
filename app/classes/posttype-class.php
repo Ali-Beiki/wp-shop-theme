@@ -60,13 +60,14 @@
 
         private static function add_custom_colunms_product($columns){
             #add custom columns to array columns
-            $columns['product_price'] = ' قیمت ';
+            $columns[Product::PRICE_META_KEY] = ' قیمت ';
             return $columns;
         }
 
         private static function show_product_price_value_columns($column,$post_id){
-            if($column == 'product_price'){
-                $product_price = get_post_meta($post_id,'product_price',true); # get price in DB (in table {prefix}_postmeta)
+            if($column == Product::PRICE_META_KEY){
+                $product_price = get_post_meta($post_id,Product::PRICE_META_KEY,true) ; # get price in DB (in table {prefix}_postmeta)
+                $product_price = !empty($product_price) ? $product_price : '0';
                 $product_price = number_format($product_price); # formating price
 
                 echo Utility::persian_number($product_price). ' تومان ';

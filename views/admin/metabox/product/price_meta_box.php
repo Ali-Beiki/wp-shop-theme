@@ -1,3 +1,3 @@
 <p>
-    <input type="text" name="product_price" value="<?php echo $price ?>">
+    <input type="text" name="<?php Product::PRICE_META_KEY ?>" value="<?php echo $price ?>">
 </p>
