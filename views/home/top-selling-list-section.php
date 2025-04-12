@@ -12,75 +12,40 @@
 				</div>
 
 				<div class="products-widget-slick" data-nav="#slick-nav-3">
-					<div>
-						<!-- product widget -->
-						<?php $new_product =new WP_Query(array(
-							'post_type' => 'product',
-							'category_name'=> 'phone'
-						)); ?>
-
-						<?php if($new_product->have_posts()):  ?>
-							<?php while($new_product->have_posts()) : $new_product->the_post(); ?>
-
-
+				
+					<!-- product widget -->
+					<?php $i=0; ?>
+					<?php $new_product =new WP_Query(array(
+						'post_type' => 'product',
+						'category_name'=> 'laptop'
+					)); ?>
+					<?php if($new_product->have_posts()):  ?>
+						<?php $total = $new_product->post_count; ?>
+						<?php while($new_product->have_posts()) : $new_product->the_post(); ?>
+						<?php if($i%3===0) : ?>
+							<div>
+						<?php endif; ?>
 							<div class="product-widget">
 								<div class="product-img">
 									<img src="<?php the_post_thumbnail_url(); ?>" alt="">
 								</div>
 								<div class="product-body">
 									<p class="product-category"><?php the_category(); ?></p>
-									<h3 class="product-name"><a href="#"> <?php the_title(); ?></a></h3>
+									<h3 class="product-name"><a href="<?php echo get_permalink(); ?>"> <?php the_title(); ?></a></h3>
 									<h4 class="product-price"><?php echo Product::price(get_the_ID()); ?></h4>
 								</div>
 							</div>
-							
-							<?php endwhile; ?>
+							<?php $i++; ?>
+						
+						<?php if($i%3===0 || $i === $total) : ?>
+							</div>
 						<?php endif; ?>
 						
-						<!-- /product widget -->
-
-					</div>
-
-					<div>
-						<!-- product widget -->
-						<div class="product-widget">
-							<div class="product-img">
-								<img src="<?php echo THEME_URL; ?>/assets/img/product01.png" alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-							</div>
-						</div>
-						<!-- /product widget -->
-
-						<!-- product widget -->
-						<div class="product-widget">
-							<div class="product-img">
-								<img src="<?php echo THEME_URL; ?>/assets/img/product02.png" alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-							</div>
-						</div>
-						<!-- /product widget -->
-
-						<!-- product widget -->
-						<div class="product-widget">
-							<div class="product-img">
-								<img src="<?php echo THEME_URL; ?>/assets/img/product03.png" alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-							</div>
-						</div>
-						<!-- product widget -->
-					</div>
+						<?php endwhile; ?>
+					<?php endif; ?>
+					
+					<!-- /product widget -->
+			
 				</div>
 			</div>
 
@@ -93,87 +58,40 @@
 				</div>
 
 				<div class="products-widget-slick" data-nav="#slick-nav-4">
-					<div>
-						<!-- product widget -->
-						<div class="product-widget">
-							<div class="product-img">
-								<img src="<?php echo THEME_URL; ?>/assets/img/product04.png" alt="">
+				
+					<!-- product widget -->
+					<?php $i=0; ?>
+					<?php $new_product =new WP_Query(array(
+						'post_type' => 'product',
+						'category_name'=> 'phone'
+					)); ?>
+					<?php if($new_product->have_posts()):  ?>
+						<?php $total = $new_product->post_count; ?>
+						<?php while($new_product->have_posts()) : $new_product->the_post(); ?>
+						<?php if($i%3===0) : ?>
+							<div>
+						<?php endif; ?>
+							<div class="product-widget">
+								<div class="product-img">
+									<img src="<?php the_post_thumbnail_url(); ?>" alt="">
+								</div>
+								<div class="product-body">
+									<p class="product-category"><?php the_category(); ?></p>
+									<h3 class="product-name"><a href="<?php echo get_permalink(); ?>"> <?php the_title(); ?></a></h3>
+									<h4 class="product-price"><?php echo Product::price(get_the_ID()); ?></h4>
+								</div>
 							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+							<?php $i++; ?>
+						
+						<?php if($i%3===0 || $i === $total) : ?>
 							</div>
-						</div>
-						<!-- /product widget -->
-
-						<!-- product widget -->
-						<div class="product-widget">
-							<div class="product-img">
-								<img src="<?php echo THEME_URL; ?>/assets/img/product05.png" alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-							</div>
-						</div>
-						<!-- /product widget -->
-
-						<!-- product widget -->
-						<div class="product-widget">
-							<div class="product-img">
-								<img src="<?php echo THEME_URL; ?>/assets/img/product06.png" alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-							</div>
-						</div>
-						<!-- product widget -->
-					</div>
-
-					<div>
-						<!-- product widget -->
-						<div class="product-widget">
-							<div class="product-img">
-								<img src="<?php echo THEME_URL; ?>/assets/img/product07.png" alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-							</div>
-						</div>
-						<!-- /product widget -->
-
-						<!-- product widget -->
-						<div class="product-widget">
-							<div class="product-img">
-								<img src="<?php echo THEME_URL; ?>/assets/img/product08.png" alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-							</div>
-						</div>
-						<!-- /product widget -->
-
-						<!-- product widget -->
-						<div class="product-widget">
-							<div class="product-img">
-								<img src="<?php echo THEME_URL; ?>/assets/img/product09.png" alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-							</div>
-						</div>
-						<!-- product widget -->
-					</div>
+						<?php endif; ?>
+						
+						<?php endwhile; ?>
+					<?php endif; ?>
+					
+					<!-- /product widget -->
+			
 				</div>
 			</div>
 
@@ -188,87 +106,40 @@
 				</div>
 
 				<div class="products-widget-slick" data-nav="#slick-nav-5">
-					<div>
-						<!-- product widget -->
-						<div class="product-widget">
-							<div class="product-img">
-								<img src="<?php echo THEME_URL; ?>/assets/img/product01.png" alt="">
+				
+					<!-- product widget -->
+					<?php $i=0; ?>
+					<?php $new_product =new WP_Query(array(
+						'post_type' => 'product',
+						'category_name'=> 'laptop'
+					)); ?>
+					<?php if($new_product->have_posts()):  ?>
+						<?php $total = $new_product->post_count; ?>
+						<?php while($new_product->have_posts()) : $new_product->the_post(); ?>
+						<?php if($i%3===0) : ?>
+							<div>
+						<?php endif; ?>
+							<div class="product-widget">
+								<div class="product-img">
+									<img src="<?php the_post_thumbnail_url(); ?>" alt="">
+								</div>
+								<div class="product-body">
+									<p class="product-category"><?php the_category(); ?></p>
+									<h3 class="product-name"><a href="<?php echo get_permalink(); ?>"> <?php the_title(); ?></a></h3>
+									<h4 class="product-price"><?php echo Product::price(get_the_ID()); ?></h4>
+								</div>
 							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+							<?php $i++; ?>
+						
+						<?php if($i%3===0 || $i === $total) : ?>
 							</div>
-						</div>
-						<!-- /product widget -->
-
-						<!-- product widget -->
-						<div class="product-widget">
-							<div class="product-img">
-								<img src="<?php echo THEME_URL; ?>/assets/img/product02.png" alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-							</div>
-						</div>
-						<!-- /product widget -->
-
-						<!-- product widget -->
-						<div class="product-widget">
-							<div class="product-img">
-								<img src="<?php echo THEME_URL; ?>/assets/img/product03.png" alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-							</div>
-						</div>
-						<!-- product widget -->
-					</div>
-
-					<div>
-						<!-- product widget -->
-						<div class="product-widget">
-							<div class="product-img">
-								<img src="<?php echo THEME_URL; ?>/assets/img/product04.png" alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-							</div>
-						</div>
-						<!-- /product widget -->
-
-						<!-- product widget -->
-						<div class="product-widget">
-							<div class="product-img">
-								<img src="<?php echo THEME_URL; ?>/assets/img/product05.png" alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-							</div>
-						</div>
-						<!-- /product widget -->
-
-						<!-- product widget -->
-						<div class="product-widget">
-							<div class="product-img">
-								<img src="<?php echo THEME_URL; ?>/assets/img/product06.png" alt="">
-							</div>
-							<div class="product-body">
-								<p class="product-category">Category</p>
-								<h3 class="product-name"><a href="#">product name goes here</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-							</div>
-						</div>
-						<!-- product widget -->
-					</div>
+						<?php endif; ?>
+						
+						<?php endwhile; ?>
+					<?php endif; ?>
+					
+					<!-- /product widget -->
+			
 				</div>
 			</div>
 
