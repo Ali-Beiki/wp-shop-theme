@@ -50,7 +50,7 @@
                             <!-- LOGO -->
                             <div class="col-md-3">
                                 <div class="header-logo">
-                                    <a href="#" class="logo">
+                                    <a href="<?php echo site_url(); ?>" class="logo">
                                         <img src="<?php echo THEME_URL; ?>/assets/img/logo.png" alt="">
                                     </a>
                                 </div>

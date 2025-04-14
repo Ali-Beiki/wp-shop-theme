@@ -1,6 +1,7 @@
 <?php
     class Product{
         const PRICE_META_KEY ='product_price'; # meta key product post
+        const SILDER_IMAGE_META_KEY ='slider_image'; # meta key product slider image
         public static function price($product_id){
 
             # invaid post id
