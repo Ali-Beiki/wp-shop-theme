@@ -5,13 +5,21 @@
 		<!-- row -->
 		<div class="row">
 			<div class="col-md-12">
-				<ul class="breadcrumb-tree">
-					<li><a href="#">Home</a></li>
-					<li><a href="#">All Categories</a></li>
-					<li><a href="#">Accessories</a></li>
-					<li><a href="#">Headphones</a></li>
-					<li class="active">Product name goes here</li>
-				</ul>
+				<?php 
+					$categories = get_the_category($post->ID);
+
+					if ($categories) {
+						// حلقه برای نمایش دسته‌بندی‌ها
+						foreach ($categories as $category) {
+							// دریافت مسیر دسته‌بندی به صورت x > y > z
+							$category_path = get_category_parents($category, true, ' > '); 
+							
+							// نمایش مسیر دسته‌بندی
+							echo '<div class="category-path d-inline" style="direction: rtl;"><p style="display: contents;">دسته‌بندی :</p> ' . html_entity_decode(esc_html($category_path)) . '</div>';
+						}
+					}
+				?>
+				
 			</div>
 		</div>
 		<!-- /row -->
@@ -33,7 +41,26 @@
 						<?php the_post_thumbnail() ?>
 					</div>
 
-					<div class="product-preview">
+					<?php
+						$slider_image_ids = get_post_meta(get_the_ID(), Product::PRODUCT_SLIDER_IMAGE_META_KEY, true);
+						$slider_image_ids = is_array($slider_image_ids) ? $slider_image_ids : explode(',', $slider_image_ids);
+						
+					
+						if (!empty($slider_image_ids)) {
+							foreach ($slider_image_ids as $image_id) {
+								// گرفتن URL تصویر با استفاده از آیدی
+								$image_url = wp_get_attachment_image_url($image_id, 'full');  // اندازه تصویر: full یا هر اندازه دلخواه دیگه
+								if ($image_url) {
+									
+									echo '<div class="product-preview">';
+									echo '<img src="' . esc_url($image_url) . '" alt="Product Image" />';
+									echo '</div>';
+								}
+							}
+						}
+					?>
+
+					<!-- <div class="product-preview">
 						<img src="./img/product03.png" alt="">
 					</div>
 
@@ -43,7 +70,7 @@
 
 					<div class="product-preview">
 						<img src="./img/product08.png" alt="">
-					</div>
+					</div> -->
 				</div>
 			</div>
 			<!-- /Product main img -->
@@ -51,21 +78,26 @@
 			<!-- Product thumb imgs -->
 			<div class="col-md-2  col-md-pull-5">
 				<div id="product-imgs">
-					<div class="product-preview">
-						<img src="./img/product01.png" alt="">
-					</div>
 
-					<div class="product-preview">
-						<img src="./img/product03.png" alt="">
-					</div>
-
-					<div class="product-preview">
-						<img src="./img/product06.png" alt="">
-					</div>
-
-					<div class="product-preview">
-						<img src="./img/product08.png" alt="">
-					</div>
+					<?php
+						$slider_image_ids = get_post_meta(get_the_ID(), Product::PRODUCT_SLIDER_IMAGE_META_KEY, true);
+						$slider_image_ids = is_array($slider_image_ids) ? $slider_image_ids : explode(',', $slider_image_ids);
+						
+					
+						if (!empty($slider_image_ids)) {
+							foreach ($slider_image_ids as $image_id) {
+								// گرفتن URL تصویر با استفاده از آیدی
+								$image_url = wp_get_attachment_image_url($image_id, 'full');  // اندازه تصویر: full یا هر اندازه دلخواه دیگه
+								if ($image_url) {
+									
+									echo '<div class="product-preview">';
+									echo '<img src="' . esc_url($image_url) . '" alt="Product Image" />';
+									echo '</div>';
+								}
+							}
+						}
+					?>
+					
 				</div>
 			</div>
 			<!-- /Product thumb imgs -->
@@ -73,7 +105,7 @@
 			<!-- Product details -->
 			<div class="col-md-5">
 				<div class="product-details">
-					<h2 class="product-name">product name goes here</h2>
+					<h2 class="product-name"><?php echo get_the_title(); ?></h2>
 					<div>
 						<div class="product-rating">
 							<i class="fa fa-star"></i>
@@ -85,12 +117,10 @@
 						<a class="review-link" href="#">10 Review(s) | Add your review</a>
 					</div>
 					<div>
-						<h3 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h3>
+						<h3 class="product-price"><?php echo Product::price_separator(get_the_ID()) ?> تومان </h3>
 						<span class="product-available">In Stock</span>
 					</div>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-						labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-						laboris nisi ut aliquip ex ea commodo consequat.</p>
+					<p><?php echo get_the_content(); ?></p>
 
 					<div class="product-options">
 						<label>

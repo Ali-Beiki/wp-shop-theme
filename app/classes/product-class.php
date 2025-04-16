@@ -1,8 +1,8 @@
 <?php
     class Product{
-        const PRICE_META_KEY ='product_price'; # meta key product post
-        const SILDER_IMAGE_META_KEY ='slider_image'; # meta key product slider image
-        public static function price($product_id){
+        const PRODUCT_PRICE_META_KEY ='product_price'; # meta key product post
+        const PRODUCT_SLIDER_IMAGE_META_KEY ='slider_image'; # meta key product slider image
+        public static function price_separator($product_id){
 
             # invaid post id
             if (!$product_id) {
@@ -10,7 +10,7 @@
             }
 
             # get value
-            $price = get_post_meta($product_id,self::PRICE_META_KEY,true);
+            $price = get_post_meta($product_id,self::PRODUCT_PRICE_META_KEY,true);
 
             # invalid value
             if (intval($price)> 0) {

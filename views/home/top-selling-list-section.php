@@ -32,7 +32,7 @@
 								<div class="product-body">
 									<p class="product-category"><?php the_category(); ?></p>
 									<h3 class="product-name"><a href="<?php echo get_permalink(); ?>"> <?php the_title(); ?></a></h3>
-									<h4 class="product-price"><?php echo Product::price(get_the_ID()); ?></h4>
+									<h4 class="product-price"><?php echo Product::price_separator(get_the_ID()); ?></h4>
 								</div>
 							</div>
 							<?php $i++; ?>
@@ -78,7 +78,7 @@
 								<div class="product-body">
 									<p class="product-category"><?php the_category(); ?></p>
 									<h3 class="product-name"><a href="<?php echo get_permalink(); ?>"> <?php the_title(); ?></a></h3>
-									<h4 class="product-price"><?php echo Product::price(get_the_ID()); ?></h4>
+									<h4 class="product-price"><?php echo Product::price_separator(get_the_ID()); ?></h4>
 								</div>
 							</div>
 							<?php $i++; ?>
@@ -126,7 +126,7 @@
 								<div class="product-body">
 									<p class="product-category"><?php the_category(); ?></p>
 									<h3 class="product-name"><a href="<?php echo get_permalink(); ?>"> <?php the_title(); ?></a></h3>
-									<h4 class="product-price"><?php echo Product::price(get_the_ID()); ?></h4>
+									<h4 class="product-price"><?php echo Product::price_separator(get_the_ID()); ?></h4>
 								</div>
 							</div>
 							<?php $i++; ?>
